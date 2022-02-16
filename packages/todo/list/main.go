@@ -1,23 +1,20 @@
 package main
 
 import (
-	"fmt"
-
-	"github.com/iancoleman/strcase"
+	"github.com/jonfriesen/todo"
 )
 
 func Main(args map[string]interface{}) map[string]interface{} {
 	res := make(map[string]interface{})
-	greetings := "world"
-	name, ok := args["name"].(string)
-	if ok {
-		greetings = name
+
+	includeCompleted := false
+	if i, ok := args["includeCompleted"].(bool); ok && i {
+		includeCompleted = i
 	}
 
-	screamingSnake := strcase.ToScreamingSnake(greetings)
+	todos := todo.List(includeCompleted)
 
-	res["package-main"] = "Hello, " + screamingSnake
+	res["body"] = todos
 
-	fmt.Printf("Hello, %s\n", screamingSnake)
 	return res
 }

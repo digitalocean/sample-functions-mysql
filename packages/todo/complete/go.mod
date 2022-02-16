@@ -1,4 +1,4 @@
-module github.com/jonfriesen/fn-todo/packages/todo/list
+module github.com/jonfriesen/fn-todo/packages/todo/complete
 
 go 1.17
 

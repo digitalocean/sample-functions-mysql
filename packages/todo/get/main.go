@@ -3,21 +3,24 @@ package main
 import (
 	"fmt"
 
-	"github.com/iancoleman/strcase"
+	"github.com/jonfriesen/todo"
 )
 
 func Main(args map[string]interface{}) map[string]interface{} {
 	res := make(map[string]interface{})
-	greetings := "world"
-	name, ok := args["name"].(string)
-	if ok {
-		greetings = name
+	itemID, ok := args["item"].(string)
+	if !ok {
+		res["body"] = "no item found"
+		return res
 	}
 
-	screamingSnake := strcase.ToScreamingSnake(greetings)
+	item, err := todo.Get(itemID)
+	if err != nil {
+		fmt.Println(">>>", err.Error())
+		res["body"] = err.Error()
+		return res
+	}
 
-	res["package-main"] = "Hello, " + screamingSnake
-
-	fmt.Printf("Hello, %s\n", screamingSnake)
+	res["body"] = item
 	return res
 }

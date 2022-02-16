@@ -1,0 +1,26 @@
+targetNamespace: ''
+cleanNamespace: false
+parameters: {}
+packages:
+  - name: todo
+    actions:
+      - name: complete
+        runtime: 'go:default'
+        web: true
+        environment:
+          "DATABASE_URL": "${DATABASE_URL}"
+      - name: get
+        runtime: 'go:default'
+        web: true
+        environment:
+          "DATABASE_URL": "${DATABASE_URL}"
+      - name: list
+        runtime: 'go:default'
+        web: true
+        environment:
+          "DATABASE_URL": "${DATABASE_URL}"
+      - name: set
+        runtime: 'go:default'
+        web: true
+        environment:
+          "DATABASE_URL": "${DATABASE_URL}"

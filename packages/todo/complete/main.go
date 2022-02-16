@@ -14,7 +14,14 @@ func Main(args map[string]interface{}) map[string]interface{} {
 		return res
 	}
 
-	updatedList, err := todo.Set(value)
+	_, err := todo.Get(value)
+	if err != nil {
+		fmt.Println(">>>", err.Error())
+		res["body"] = err.Error()
+		return res
+	}
+
+	updatedList, err := todo.Complete(value)
 	if err != nil {
 		fmt.Println(">>>", err.Error())
 		res["body"] = err.Error()
