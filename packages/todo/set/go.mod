@@ -2,7 +2,7 @@ module github.com/jonfriesen/fn-todo/packages/todo/set
 
 go 1.17
 
-require github.com/jonfriesen/todo v0.0.0-20220216224214-a923734d3caf
+require github.com/jonfriesen/todo v0.0.0-20220216230935-0e4ae468ceb2
 
 require (
 	github.com/jackc/chunkreader/v2 v2.0.1 // indirect
