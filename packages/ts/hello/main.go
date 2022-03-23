@@ -28,14 +28,18 @@ func Main(args map[string]interface{}) map[string]interface{} {
 		res["body"] = err.Error()
 		return res
 	}
-	r, err := db.Query("SELECT 1 FROM DUAL")
+	r := db.QueryRow("SELECT 1 FROM DUAL")
 	if err != nil {
 		fmt.Println("could not query from db")
 		res["body"] = err.Error()
 		return res
 	}
 	var result uint32
-	r.Scan(&result)
+	err = r.Scan(&result)
+	if err != nil {
+		res["body"] = "could not scan result"
+		return res
+	}
 	res["body"] = result
 	return res
 }
