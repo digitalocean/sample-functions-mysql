@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	"os"
 
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -10,7 +11,18 @@ import (
 // Main is the entry point of function.
 func Main(args map[string]interface{}) map[string]interface{} {
 	res := make(map[string]interface{})
-	db, err := sql.Open("mysql", "doadmin:hyMY0iFw2g72R7zX@db-mysql-nyc3-40125-do-user-4646103-0.b.db.ondigitalocean.com:25060/defaultdb")
+	dbURL := os.Getenv("DATABASE_URL")
+	if dbURL == "" {
+		res["body"] = "invalid db url"
+		return res
+	}
+	dbPassword := os.Getenv("DATABASE_PASSWORD")
+	if dbPassword == "" {
+		res["body"] = "invalid db password"
+		return res
+	}
+	dsn := fmt.Sprintf("doadmin:%v@tcp(%v:25060)/defaultdb", dbPassword, dbURL)
+	db, err := sql.Open("mysql", dsn)
 	if err != nil {
 		fmt.Println("could not connect to database")
 		res["body"] = err.Error()

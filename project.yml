@@ -1,0 +1,8 @@
+packages:
+  - name: default
+    environment:
+        DATABASE_URL: "${DATABASE_URL}"
+        DATABASE_PASSWORD: "${DATABASE_PASSWORD}"
+    actions:
+      - name: hello
+        runtime: 'go:default'
