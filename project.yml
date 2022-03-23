@@ -1,5 +1,5 @@
 packages:
-  - name: default
+  - name: ts
     environment:
         DATABASE_URL: "${DATABASE_URL}"
         DATABASE_PASSWORD: "${DATABASE_PASSWORD}"

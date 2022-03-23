@@ -16,9 +16,9 @@
     "namespace": "e75c1e26-b53ojxxzhsy",
     "packageVersions": {},
     "actionVersions": {
-      "hello": {
-        "version": "0.0.1",
-        "digest": "1df93f4b6270b2f42b9730ee11e5d002eeea4742c5211daa45665ad8f6228db2"
+      "ts/hello": {
+        "digest": "e1c148f1124434735cb73155ccd92bd739b97157d7edf727baf78a93d2acfd28",
+        "version": "0.0.1"
       }
     },
     "webHashes": {}
