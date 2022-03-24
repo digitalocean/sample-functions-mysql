@@ -21,7 +21,7 @@ func Main(args map[string]interface{}) map[string]interface{} {
 		res["body"] = "invalid db password"
 		return res
 	}
-	dsn := fmt.Sprintf("dev:%v@tcp(%v:25060)/dev", dbPassword, dbURL)
+	dsn := fmt.Sprintf("doadmin:%v@tcp(%v:25060)/defaultdb", dbPassword, dbURL)
 	db, err := sql.Open("mysql", dsn)
 	if err != nil {
 		fmt.Println("could not connect to database")
