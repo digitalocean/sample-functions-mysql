@@ -23,6 +23,7 @@ func Main(args map[string]interface{}) map[string]interface{} {
 	}
 	dsn := fmt.Sprintf("doadmin:%v@tcp(%v:25060)/defaultdb", dbPassword, dbURL)
 	db, err := sql.Open("mysql", dsn)
+	defer db.Close()
 	if err != nil {
 		fmt.Println("could not connect to database")
 		res["body"] = err.Error()
