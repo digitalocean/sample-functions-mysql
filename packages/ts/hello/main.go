@@ -37,7 +37,7 @@ func Main(args map[string]interface{}) map[string]interface{} {
 	var result uint32
 	err = r.Scan(&result)
 	if err != nil {
-		res["body"] = "could not scan result"
+		res["body"] = err.Error()
 		return res
 	}
 	res["body"] = result
