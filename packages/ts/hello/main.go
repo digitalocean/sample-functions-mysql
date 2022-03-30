@@ -21,7 +21,17 @@ func Main(args map[string]interface{}) map[string]interface{} {
 		res["body"] = "invalid db password"
 		return res
 	}
-	dsn := fmt.Sprintf("doadmin:%v@tcp(%v:25060)/defaultdb", dbPassword, dbURL)
+	dbUser := os.Getenv("DATABASE_USER")
+	if dbUser == "" {
+		res["body"] = "invalid db user"
+		return res
+	}
+	dbName := os.Getenv("DATABASE_NAME")
+	if dbName == "" {
+		res["body"] = "invalid db name"
+		return res
+	}
+	dsn := fmt.Sprintf("%v:%v@tcp(%v:25060)/%v", dbUser, dbPassword, dbURL, dbName)
 	db, err := sql.Open("mysql", dsn)
 	defer db.Close()
 	if err != nil {
