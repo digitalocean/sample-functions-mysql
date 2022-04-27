@@ -23,7 +23,7 @@ func Main(args map[string]interface{}) map[string]interface{} {
 	// Create a table.
 	_, err = db.ExecContext(ctx, "CREATE TABLE hello(id int(11))")
 	if err != nil {
-		res["body"] = err
+		res["body"] = err.Error()
 		return res
 	}
 	// Insert 10000 rows in db
@@ -35,7 +35,7 @@ func Main(args map[string]interface{}) map[string]interface{} {
 		}
 		_, err = stmt.ExecContext(ctx, i)
 		if err != nil {
-			res["body"] = err
+			res["body"] = err.Error()
 			return res
 		}
 	}
