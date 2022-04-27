@@ -25,8 +25,8 @@ func Main(args map[string]interface{}) map[string]interface{} {
 		res["body"] = err.Error()
 		return res
 	}
-	// Insert 10000 rows in db
-	for i := 0; i < 10000; i++ {
+	// Insert 10 rows in db
+	for i := 0; i < 10; i++ {
 		stmt, err := db.PrepareContext(ctx, "INSERT INTO hello(id) VALUES(?)")
 		if err != nil {
 			res["body"] = err.Error()
