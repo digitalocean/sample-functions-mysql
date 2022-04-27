@@ -1,10 +1,5 @@
 packages:
   - name: ts
-    environment:
-        DATABASE_URL: "${DATABASE_URL}"
-        DATABASE_PASSWORD: "${DATABASE_PASSWORD}"
-        DATABASE_USER: "${DATABASE_USER}"
-        DATABASE_NAME: "${DATABASE_NAME}"
     actions:
       - name: hello
         runtime: 'go:default'

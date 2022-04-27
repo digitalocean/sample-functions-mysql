@@ -12,27 +12,7 @@ import (
 func Main(args map[string]interface{}) map[string]interface{} {
 	res := make(map[string]interface{})
 	dbURL := os.Getenv("DATABASE_URL")
-	if dbURL == "" {
-		res["body"] = "invalid db url"
-		return res
-	}
-	dbPassword := os.Getenv("DATABASE_PASSWORD")
-	if dbPassword == "" {
-		res["body"] = "invalid db password"
-		return res
-	}
-	dbUser := os.Getenv("DATABASE_USER")
-	if dbUser == "" {
-		res["body"] = "invalid db user"
-		return res
-	}
-	dbName := os.Getenv("DATABASE_NAME")
-	if dbName == "" {
-		res["body"] = "invalid db name"
-		return res
-	}
-	dsn := fmt.Sprintf("%v:%v@tcp(%v:25060)/%v", dbUser, dbPassword, dbURL, dbName)
-	db, err := sql.Open("mysql", dsn)
+	db, err := sql.Open("mysql", dbURL)
 	defer db.Close()
 	if err != nil {
 		fmt.Println("could not connect to database")
