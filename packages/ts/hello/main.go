@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"strings"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/xo/dburl"
@@ -11,7 +12,7 @@ import (
 // Main is the entry point of function.
 func Main(args map[string]interface{}) map[string]interface{} {
 	res := make(map[string]interface{})
-	db, err := dburl.Open(os.Getenv("DATABASE_URL"))
+	db, err := dburl.Open(strings.TrimSuffix(os.Getenv("DATABASE_URL"), "?ssl-mode=REQUIRED"))
 	if err != nil {
 		res["body"] = err.Error()
 		return res
