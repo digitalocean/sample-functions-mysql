@@ -1,2 +1,4 @@
 github.com/go-sql-driver/mysql v1.6.0 h1:BCTh4TKNUYmOmMUcQ3IipzF5prigylS7XXjEkfCHuOE=
 github.com/go-sql-driver/mysql v1.6.0/go.mod h1:DCzpHaOWr8IXmIStZouvnhqoel9Qv2LBy8hT2VhHyBg=
+github.com/xo/dburl v0.9.1 h1:y771capKup7TLEQBbc1NzY+NkHRD5DdHITeswr79JpM=
+github.com/xo/dburl v0.9.1/go.mod h1:7Uupe87dIDxNrbKFRrpw6bAf2l3/rqU42iwlpq1nyjY=
