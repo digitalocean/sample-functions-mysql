@@ -20,7 +20,7 @@ func Main(args map[string]interface{}) map[string]interface{} {
 	defer db.Close()
 	ctx := context.Background()
 	// Create a table.
-	_, err = db.ExecContext(ctx, "CREATE TABLE hello(id int(11) PRIMARY KEY)")
+	_, err = db.ExecContext(ctx, "CREATE TABLE IF NOT EXISTS hello(id int(11) AUTO_INCREMENT PRIMARY KEY)")
 	if err != nil {
 		res["body"] = err.Error()
 		return res
