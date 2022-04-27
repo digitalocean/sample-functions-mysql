@@ -16,7 +16,7 @@ func Main(args map[string]interface{}) map[string]interface{} {
 	defer db.Close()
 	if err != nil {
 		fmt.Println("could not connect to database")
-		res["body"] = err.Error()
+		res["body"] = dbURL
 		return res
 	}
 	r := db.QueryRow("SELECT 1 FROM DUAL")
