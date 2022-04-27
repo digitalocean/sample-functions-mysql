@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"os"
 	"strings"
@@ -18,9 +19,29 @@ func Main(args map[string]interface{}) map[string]interface{} {
 		return res
 	}
 	defer db.Close()
-	r := db.QueryRow("SELECT 1 FROM DUAL")
+	ctx := context.Background()
+	// Create a table.
+	_, err = db.ExecContext(ctx, "CREATE TABLE hello(id int(11))")
 	if err != nil {
-		fmt.Println("could not query from db")
+		res["body"] = err
+		return res
+	}
+	// Insert 10000 rows in db
+	for i := 0; i < 10000; i++ {
+		stmt, err := db.PrepareContext(ctx, "INSERT INTO hello(id) VALUES(?)")
+		if err != nil {
+			res["body"] = err.Error()
+			return res
+		}
+		_, err = stmt.ExecContext(ctx, i)
+		if err != nil {
+			res["body"] = err
+			return res
+		}
+	}
+	// Select max value inserted.
+	r := db.QueryRow("SELECT MAX FROM hello")
+	if err != nil {
 		res["body"] = err.Error()
 		return res
 	}
