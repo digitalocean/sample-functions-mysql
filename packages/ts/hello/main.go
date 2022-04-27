@@ -42,7 +42,7 @@ func Main(args map[string]interface{}) map[string]interface{} {
 		}
 	}
 	// Select max value inserted.
-	r := db.QueryRow("SELECT MAX(value) FROM hello")
+	r := db.QueryRow("SELECT MAX(id) FROM hello")
 	if err != nil {
 		res["body"] = err.Error()
 		return res
