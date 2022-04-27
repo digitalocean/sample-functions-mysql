@@ -1,5 +1,7 @@
 packages:
   - name: ts
+    environment:
+        DATABASE_URL: "${DATABASE_URL}"
     actions:
       - name: hello
         runtime: 'go:default'
