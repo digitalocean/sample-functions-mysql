@@ -23,13 +23,15 @@ git clone git@github.com:digitalocean/sample-functions-mysql.git
 
 ```
 # deploy the project, using a remote build so that compiled executable matched runtime environment
-> doctl serverless deploy sample-functions-mysql --remote-build
+> doctl serverless deploy sample-functions-mysql --remote-build --env sample-functions-mysql/packages/ts/hello/.env
 Deploying 'sample-functions-mysql'
   to namespace 'fn-...'
   on host 'https://faas-...'
-Submitted action 'emails' for remote building and deployment in runtime go:default (id: ...)
+Submitted action 'ts/hello' for remote building and deployment in runtime go:default (id: 7f947f1f0050461a947f1f0050261a5f)
+Processing of action 'ts/hello' is still running remotely ...
+Deployment status recorded in 'sample-functions-mysql/.deployed'
 
-Deployed functions ('doctl sls fn get <funcName> --url' for URL):
+Deployed functions ('doctl sbx fn get <funcName> --url' for URL):
   - ts/hello
 ```
 
