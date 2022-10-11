@@ -10,6 +10,7 @@ Documentation is available at https://docs.digitalocean.com/products/functions
 
 * You need a DigitalOcean account. If you don't already have one, you can sign up at [https://cloud.digitalocean.com/registrations/new](https://cloud.digitalocean.com/registrations/new).
 * You need to have a MySQL database that the function can connect to. You can [create a MySQL cluster](https://docs.digitalocean.com/products/databases/mysql/how-to/create/) on DO managed DBaaS
+* You need to provide the database connection string of the form `mysql://{user}:{password}@{db_fqdn}:25060/{db_name}?ssl-mode=REQUIRED` in the `DATABASE_URL` variable in the `.env` file.
 * To deploy from the command line, you will need the [DigitalOcean `doctl` CLI](https://github.com/digitalocean/doctl/releases).
 
 
