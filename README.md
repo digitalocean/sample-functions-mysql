@@ -1,4 +1,4 @@
-# Sample Function: MySQL"
+# Sample Function: MySQL
 
 ## Introduction
 
@@ -26,7 +26,7 @@ git clone git@github.com:digitalocean/sample-functions-mysql.git
 Deploying 'sample-functions-mysql'
   to namespace 'fn-...'
   on host 'https://faas-...'
-Submitted action 'emails' for remote building and deployment in runtime python:default (id: ...)
+Submitted action 'emails' for remote building and deployment in runtime go:default (id: ...)
 
 Deployed functions ('doctl sls fn get <funcName> --url' for URL):
   - ts/hello
